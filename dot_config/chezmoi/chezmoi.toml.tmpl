@@ -1,0 +1,13 @@
+{{/* boolean feature tags */}}
+{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $personal := false -}}{{/* true if this machine is personal use and has additional tools */}}
+{{- "" -}}
+
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $personal = true -}}
+{{- end -}}
+
+[data]
+  transient = {{ $transient }}
+  personal = {{ $personal }}
+  email = "hussainweb@gmail.com"
