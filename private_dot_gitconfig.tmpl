@@ -53,15 +53,15 @@
 [init]
 	defaultBranch = main
 [core]
-{{- if eq .chezmoi.os "darwin" -}}
-  editor = code -rw
-{{- end -}}
+{{- if eq .chezmoi.os "darwin" }}
+	editor = code -rw
+{{ end }}
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only
-{{- if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" }}
 [merge]
-  tool = vscode
+	tool = vscode
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
-{{- end -}}
+{{ end -}}

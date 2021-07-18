@@ -1,12 +1,12 @@
-{{- if $personal -}}
+{{ if .personal -}}
 fish_add_path -g "{{ .chezmoi.homeDir }}/tools/flutter/bin"
 fish_add_path -g "{{ .chezmoi.homeDir }}/.cargo/bin"
 fish_add_path -g "{{ .chezmoi.homeDir }}/.platformsh/bin"
-{{- end -}}
+{{- end }}
 fish_add_path -g "{{ .chezmoi.homeDir }}/.composer/vendor/bin"
-{{- if $personal -}}
+{{ if .personal -}}
 fish_add_path -g "/opt/homebrew/bin" "/opt/homebrew/sbin"
-{{- end -}}
+{{- end }}
 
 set -x GPG_TTY (tty)
 set -x fish_emoji_width 2
