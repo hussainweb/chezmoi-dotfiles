@@ -8,6 +8,8 @@ fish_add_path -g "{{ .chezmoi.homeDir }}/.composer/vendor/bin"
 fish_add_path -g "/opt/homebrew/bin" "/opt/homebrew/sbin"
 {{- end }}
 
+source {{ .chezmoi.homeDir }}/.asdf/asdf.fish
+
 set -x GPG_TTY (tty)
 set -x fish_emoji_width 2
 
