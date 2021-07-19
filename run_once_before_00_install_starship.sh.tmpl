@@ -13,5 +13,5 @@ fi
 {{- if (eq .chezmoi.os "darwin") }}
 brew install starship
 {{- else }}
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
 {{- end }}
