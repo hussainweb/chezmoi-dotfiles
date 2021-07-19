@@ -29,7 +29,7 @@ sudo apt-get update
 sudo apt-get -yq install fish
   {{- end }}
   {{- if (eq .chezmoi.osRelease.id "fedora") }}
-dnf install fish
+dnf -yq install fish
   {{- end }}
 {{- end }}
 
