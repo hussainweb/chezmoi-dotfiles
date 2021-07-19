@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+{{- if (eq .chezmoi.os "darwin") }}
+type brew &> /dev/null || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+{{- end }}
+
+if command -v fish &> /dev/null
+then
+  echo "fish already installed"
+  exit
+fi
+
+{{- if (eq .chezmoi.os "darwin") }}
+brew install fish
+{{- end }}
+
+{{- if (eq .chezmoi.os "linux") }}
+  {{- if (eq .chezmoi.osRelease.id "ubuntu") }}
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt-get update
+sudo apt-get install fish
+  {{- end }}
+  {{- if (eq .chezmoi.osRelease.id "fedora") }}
+dnf install fish
+  {{- end }}
+{{- end }}
+
+chezmoi completion fish --output ~/.config/fish/completions/chezmoi.fish
