@@ -1,6 +1,10 @@
 #!/usr/bin/env fish
 
-type fisher &>/dev/null || curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+if ! command -v fisher &> /dev/null
+then
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+fi
+
 fisher install danhper/fish-ssh-agent
 fisher install decors/fish-colored-man
 fisher install edc/bass

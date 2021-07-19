@@ -20,6 +20,12 @@ sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get update
 DEBIAN_FRONTEND=noninteractive sudo apt-get -yq install fish
   {{- end }}
+  {{- if (eq .chezmoi.osRelease.id "debian") }}
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
+curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+sudo apt update
+DEBIAN_FRONTEND=noninteractive sudo apt -yq install fish
+  {{- end }}
   {{- if (eq .chezmoi.osRelease.id "fedora") }}
 dnf install fish
   {{- end }}
