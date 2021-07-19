@@ -16,15 +16,17 @@ brew install fish
 
 {{- if (eq .chezmoi.os "linux") }}
   {{- if (eq .chezmoi.osRelease.id "ubuntu") }}
-DEBIAN_FRONTEND=noninteractive sudo apt-add-repository ppa:fish-shell/release-3
-DEBIAN_FRONTEND=noninteractive sudo apt-get update
-DEBIAN_FRONTEND=noninteractive sudo apt-get -yq install fish
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt-get update
+sudo apt-get -yq install fish
   {{- end }}
   {{- if (eq .chezmoi.osRelease.id "debian") }}
+export DEBIAN_FRONTEND=noninteractive
 echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
 curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
-DEBIAN_FRONTEND=noninteractive sudo apt-get update
-DEBIAN_FRONTEND=noninteractive sudo apt-get -yq install fish
+sudo apt-get update
+sudo apt-get -yq install fish
   {{- end }}
   {{- if (eq .chezmoi.osRelease.id "fedora") }}
 dnf install fish
