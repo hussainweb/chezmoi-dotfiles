@@ -18,7 +18,7 @@ brew install fish
   {{- if (eq .chezmoi.osRelease.id "ubuntu") }}
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get update
-sudo apt-get install fish
+sudo apt-get -yq install fish
   {{- end }}
   {{- if (eq .chezmoi.osRelease.id "fedora") }}
 dnf install fish
