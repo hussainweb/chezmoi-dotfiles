@@ -5,7 +5,7 @@ function update --description 'Get OS X Software Updates and update Homebrew, ma
     sudo softwareupdate -i -a
 
     brew update
-    brew upgrade --force --all
+    brew upgrade --force
     brew cleanup
 
     mas upgrade
