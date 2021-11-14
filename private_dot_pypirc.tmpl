@@ -1,0 +1,3 @@
+[pypi]
+  username = __token__
+  password = {{ ( index (lastpass "PyPI Axelerant") 0).note.token | trim }}
