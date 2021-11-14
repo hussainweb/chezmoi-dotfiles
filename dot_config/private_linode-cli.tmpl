@@ -1,0 +1,9 @@
+[DEFAULT]
+default-user = mississaugajamaat
+
+[mississaugajamaat]
+token = {{ (index (lastpass "Linode MississaugaJamaat") 0).note.key | trim }}
+region = ca-central
+type = g6-nanode-1
+image = linode/ubuntu20.04
+
