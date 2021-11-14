@@ -32,9 +32,3 @@ sudo apt-get -yq install fish
 dnf -yq install fish
   {{- end }}
 {{- end }}
-
-# Start fish so that it can create some of the config
-fish -c ""
-mkdir -p ~/.config/fish/completions
-
-chezmoi completion fish --output ~/.config/fish/completions/chezmoi.fish
