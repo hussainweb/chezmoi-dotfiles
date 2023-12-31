@@ -2,8 +2,7 @@
 default-user = mississaugajamaat
 
 [mississaugajamaat]
-token = {{ (index (lastpass "Linode MississaugaJamaat") 0).note.key | trim }}
+token = {{ onepasswordRead "op://Personal/Linode MississaugaJamaat/Access Token/jff4dfpiiadeuqtxiz5qaqjwm4" "my.1password.com" }}
 region = ca-central
 type = g6-nanode-1
-image = linode/ubuntu20.04
-
+image = linode/ubuntu22.04

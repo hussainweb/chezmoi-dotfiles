@@ -7,7 +7,7 @@
     format: ""
     no-header: false
     type: ""
-access-token: {{ (index (lastpass "digitalocean.com hussainweb") 0).note.cliToken | trim }}
+access-token: {{ onepasswordRead "op://Personal/digitalocean.com hussainweb/token" "my.1password.com" }}
 account:
   get:
     format: ""
