@@ -32,6 +32,36 @@ action:
     format: ""
     no-header: false
     poll-timeout: 5
+activations:
+  get:
+    function: ""
+    last: false
+    logs: false
+    quiet: false
+    result: false
+    skip: 0
+  list:
+    count: false
+    format: ""
+    full: false
+    limit: 30
+    no-header: false
+    since: 0
+    skip: 0
+    upto: 0
+  logs:
+    follow: false
+    function: ""
+    last: false
+    limit: 1
+    package: ""
+    strip: false
+  result:
+    function: ""
+    last: false
+    limit: 1
+    quiet: false
+    skip: 0
 alert:
   create:
     compare: ""
@@ -70,6 +100,7 @@ apps:
   create:
     format: ""
     no-header: false
+    project-id: ""
     spec: ""
     upsert: false
     wait: false
@@ -89,7 +120,11 @@ apps:
   list:
     format: ""
     no-header: false
+    with-projects: false
   list-alerts:
+    format: ""
+    no-header: false
+  list-buildpacks:
     format: ""
     no-header: false
   list-deployments:
@@ -117,9 +152,20 @@ apps:
     app-alert-destinations: ""
     format: ""
     no-header: false
+  upgrade-buildpack:
+    buildpack: ""
+    format: ""
+    major-version: 0
+    no-header: false
+    trigger-deployment: true
 auth:
+  init:
+    token-validation-server: https://cloud.digitalocean.com
   list:
     format: ""
+auth-contexts:
+  default: "true"
+  work: dop_v1_880ccff6b0c80be3ac7b1fbdba25df823534ca573705100d2ac7579b96e76431
 balance:
   get:
     format: ""
@@ -207,6 +253,7 @@ cluster:
   update:
     auto-upgrade: false
     cluster-name: ""
+    ha: false
     maintenance-window: any=00:00
     set-current-context: true
     surge-upgrade: false
@@ -218,7 +265,7 @@ compute:
   ssh:
     ssh-agent-forwarding: false
     ssh-command: ""
-    ssh-key-path: /Users/hw/.ssh/id_rsa
+    ssh-key-path: {{ .chezmoi.homeDir }}/.ssh/id_rsa
     ssh-port: 22
     ssh-private-ip: false
     ssh-user: root
@@ -236,10 +283,17 @@ databases:
     num-nodes: 1
     private-network-uuid: ""
     region: nyc1
+    restore-from-cluster-name: ""
+    restore-from-timestamp: ""
     size: db-s-1vcpu-1gb
     version: ""
+    wait: false
   delete:
     force: false
+  fork:
+    restore-from-cluster-id: ""
+    restore-from-timestamp: ""
+    wait: false
   get:
     format: ""
     no-header: false
@@ -261,6 +315,20 @@ db:
   list:
     format: ""
     no-header: false
+dev:
+  build:
+    app: ""
+    build-command: ""
+    env-file: ""
+    no-cache: false
+    registry: ""
+    spec: ""
+    timeout: 0s
+  config:
+    set:
+      dev-config: ""
+    unset:
+      dev-config: ""
 domain:
   create:
     format: ""
@@ -475,6 +543,28 @@ floating-ip-action:
   unassign:
     format: ""
     no-header: false
+functions:
+  get:
+    code: false
+    save: false
+    save-as: ""
+    save-env: ""
+    save-env-json: ""
+    url: false
+  invoke:
+    full: false
+    no-wait: false
+    param: []
+    param-file: ""
+    web: false
+  list:
+    count: false
+    format: ""
+    limit: ""
+    name: false
+    name-sort: false
+    no-header: false
+    skip: ""
 garbage-collection:
   get-active:
     format: ""
@@ -544,6 +634,7 @@ kubeconfig:
   exec-credential:
     version: ""
   save:
+    alias: ""
     expiry-seconds: 0
     set-current-context: true
   show:
@@ -555,13 +646,17 @@ load-balancer:
     forwarding-rules: ""
   create:
     algorithm: round_robin
+    allow-list: []
+    deny-list: []
     disable-lets-encrypt-dns-records: false
     droplet-ids: []
     enable-backend-keepalive: false
     enable-proxy-protocol: false
     forwarding-rules: ""
     health-check: ""
+    http-idle-timeout-seconds: 0
     name: ""
+    project-id: ""
     redirect-http-to-https: false
     region: ""
     size: ""
@@ -569,6 +664,7 @@ load-balancer:
     sticky-sessions: ""
     tag-name: ""
     vpc-uuid: ""
+    wait: false
   delete:
     force: false
   get:
@@ -583,6 +679,8 @@ load-balancer:
     forwarding-rules: ""
   update:
     algorithm: round_robin
+    allow-list: []
+    deny-list: []
     disable-lets-encrypt-dns-records: false
     droplet-ids: []
     enable-backend-keepalive: false
@@ -590,6 +688,7 @@ load-balancer:
     forwarding-rules: ""
     health-check: ""
     name: ""
+    project-id: ""
     redirect-http-to-https: false
     region: ""
     size: ""
@@ -604,6 +703,16 @@ maintenance-window:
   update:
     day: ""
     hour: ""
+namespaces:
+  create:
+    label: ""
+    no-connect: false
+    region: ""
+  delete:
+    force: false
+  list:
+    format: ""
+    no-header: false
 node-pool:
   create:
     auto-scale: false
@@ -640,6 +749,13 @@ node-pool:
     name: ""
     tag: []
     taint: []
+options:
+  regions:
+    engine: ""
+  slugs:
+    engine: ""
+  versions:
+    engine: ""
 output: text
 pool:
   create:
@@ -716,6 +832,7 @@ region:
     no-header: false
 registry:
   create:
+    region: ""
     subscription-tier: basic
   delete:
     force: false
@@ -730,6 +847,9 @@ registry:
     namespace: kube-system
   login:
     expiry-seconds: 0
+    read-only: false
+  logout:
+    authorization-server-endpoint: https://cloud.digitalocean.com/v1/oauth/revoke
 replica:
   create:
     private-network-uuid: ""
@@ -751,7 +871,13 @@ repository:
   list:
     format: ""
     no-header: false
+  list-manifests:
+    format: ""
+    no-header: false
   list-tags:
+    format: ""
+    no-header: false
+  list-v2:
     format: ""
     no-header: false
 required:
@@ -762,6 +888,8 @@ required:
       spec: true
     update:
       spec: true
+    upgrade-buildpack:
+      buildpack: true
   certificate:
     create:
       name: true
@@ -769,6 +897,8 @@ required:
     create:
       region: true
   databases:
+    fork:
+      restore-from-cluster-id: true
     migrate:
       region: true
     resize:
@@ -830,11 +960,18 @@ required:
     update:
       day: true
       hour: true
+  namespaces:
+    create:
+      label: true
+      region: true
   node-pool:
     create:
       count: true
       name: true
       size: true
+  options:
+    slugs:
+      engine: true
   pool:
     create:
       db: true
@@ -854,6 +991,11 @@ required:
       public-key-file: true
     update:
       key-name: true
+  tag:
+    apply:
+      resource: true
+    remove:
+      resource: true
   volume:
     create:
       size: true
@@ -869,6 +1011,32 @@ required:
     create:
       name: true
       region: true
+reserved-ip:
+  create:
+    droplet-id: 0
+    format: ""
+    no-header: false
+    project-id: ""
+    region: ""
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+    region: ""
+reserved-ip-action:
+  assign:
+    format: ""
+    no-header: false
+  get:
+    format: ""
+    no-header: false
+  unassign:
+    format: ""
+    no-header: false
 resources:
   assign:
     resource: []
@@ -878,6 +1046,55 @@ resources:
   list:
     format: ""
     no-header: false
+serverless:
+  connect:
+    apihost: ""
+    auth: ""
+  deploy:
+    apihost: ""
+    auth: ""
+    build-env: ""
+    env: ""
+    exclude: ""
+    include: ""
+    incremental: false
+    insecure: false
+    no-triggers: false
+    remote-build: false
+    verbose-build: false
+    verbose-zip: false
+    yarn: false
+  get-metadata:
+    env: ""
+    exclude: ""
+    include: ""
+    no-triggers: false
+  init:
+    language: javascript
+    overwrite: false
+  status:
+    credentials: false
+    languages: false
+    version: false
+  undeploy:
+    all: false
+    apihost: ""
+    auth: ""
+    force: false
+    packages: false
+    triggers: false
+  watch:
+    apihost: ""
+    auth: ""
+    build-env: ""
+    env: ""
+    exclude: ""
+    include: ""
+    insecure: false
+    remote-build: false
+    verbose-build: false
+    verbose-zip: false
+    yarn: false
 size:
   list:
     format: ""
@@ -927,6 +1144,8 @@ ssh-key:
     key-name: ""
     no-header: false
 tag:
+  apply:
+    resource: []
   delete:
     force: false
   get:
@@ -934,6 +1153,22 @@ tag:
     no-header: false
   list:
     format: ""
+    no-header: false
+  remove:
+    resource: []
+triggers:
+  disable:
+    format: ""
+    no-header: false
+  enable:
+    format: ""
+    no-header: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    function: ""
     no-header: false
 user:
   create:

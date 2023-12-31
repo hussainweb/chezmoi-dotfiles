@@ -1,17 +1,19 @@
 {{ if .personal -}}
 fish_add_path -g "{{ .chezmoi.homeDir }}/tools/flutter/bin"
 fish_add_path -g "{{ .chezmoi.homeDir }}/.cargo/bin"
-fish_add_path -g "{{ .chezmoi.homeDir }}/.platformsh/bin"
 {{- end }}
 fish_add_path -g "{{ .chezmoi.homeDir }}/.composer/vendor/bin"
 {{ if .personal -}}
 fish_add_path -g "/opt/homebrew/bin" "/opt/homebrew/sbin"
 {{- end }}
 
-source {{ .chezmoi.homeDir }}/.asdf/asdf.fish
-
 set -x GPG_TTY (tty)
 set -x fish_emoji_width 2
 
+set -gx HOMEBREW_GITHUB_API_TOKEN {{ onepasswordRead "op://Personal/github.com/Tokens/Homebrew" "my.1password.com" }}
+
+source {{ .chezmoi.homeDir }}/.asdf/asdf.fish
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+test -e {$HOME}/.config/op/plugins.sh ; and source {$HOME}/.config/op/plugins.sh
 starship init fish | source
