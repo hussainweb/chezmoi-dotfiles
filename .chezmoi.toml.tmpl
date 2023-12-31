@@ -11,3 +11,6 @@
   transient = {{ $transient }}
   personal = {{ $personal }}
   email = "hussainweb@gmail.com"
+
+[hooks.read-source-state.pre]
+    command = ".local/share/chezmoi/.install-1password.sh"
