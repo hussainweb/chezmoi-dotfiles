@@ -5,9 +5,15 @@
 set -eu
 
 # Install Homebrew only on macOS
-if [ "$(uname -s)" == "Darwin" ] && [ ! "$(command -v brew1)" ]; then
+if [ "$(uname -s)" == "Darwin" ] && [ ! "$(command -v brew)" ]; then
   echo 'Installing Homebrew...'
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	echo '==================='
+	echo 'Homebrew installed.'
+	echo '==================='
+	echo 'Follow the instructions above to add homebrew to your shell path and rerun'
+	echo 'the install script.'
+	exit
 fi
 
 if ! chezmoi="$(command -v chezmoi)"; then
