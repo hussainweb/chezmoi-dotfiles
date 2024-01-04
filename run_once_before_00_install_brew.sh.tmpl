@@ -24,14 +24,14 @@ cask "font-cascadia-code"
 cask "font-cascadia-code-pl"
 cask "font-cascadia-mono"
 cask "font-cascadia-mono-pl"
-cask "font-caskaydia-cove-nerd-font"
-cask "font-droid-sans-mono-nerd-font"
-cask "font-fira-code-nerd-font"
-cask "font-go-mono-nerd-font"
-cask "font-hack"
-cask "font-hack-nerd-font"
-cask "font-inconsolata"
-cask "font-jetbrains-mono"
+      - font-caskaydia-cove-nerd-font
+      - font-droid-sans-mono-nerd-font
+      - font-fira-code-nerd-font
+      - font-go-mono-nerd-font
+      - font-hack
+      - font-hack-nerd-font
+      - font-inconsolata
+      - font-jetbrains-mono
 #cask "font-microsoft-office"
 
 # IDEs
@@ -117,8 +117,8 @@ cask "vlc"
 
 # Misc
 #cask "steam"
-cask "osxfuse"
-cask "buttercup"
+#cask "osxfuse"
+#cask "buttercup"
 
 # Devices
 cask "elgato-control-center"
@@ -129,32 +129,26 @@ cask "logi-options-plus"
 
 # Modern CLI tools
 
-brew "bat"
-brew "bottom"
-brew "broot"
-brew "cheat"
-brew "choose-rust"
-brew "curlie"
-brew "difftastic"
-brew "doggo"
-brew "duf"
-brew "dust"
-brew "exa"
-brew "fd"
-brew "fzf"
-brew "gping"
-brew "hexyl"
-brew "httpie"
-brew "lla"
-brew "lsd"
-brew "bgreenwell/lstr/lstr"
-brew "ripgrep"
-brew "the_silver_searcher"
-brew "xh"
-
-# AI tools
-brew "llm"
-brew "ollama"
+      - bat
+      - bottom
+      - broot
+      - cheat
+      - choose-rust
+      - curlie
+      - difftastic
+      - dog
+      - duf
+      - dust
+      - exa
+      - fd
+      - fzf
+      - gping
+      - hexyl
+      - httpie
+      - lsd
+      - ripgrep
+      - the_silver_searcher
+      - xh
 
 # Other tools
 
@@ -177,7 +171,6 @@ brew "dnsmasq", restart_service: true
 brew "docker-completion"
 brew "doctl"
 brew "exercism"
-brew "fd"
 brew "ffmpeg"
 brew "fig"
 brew "fish"
@@ -220,7 +213,9 @@ brew "node"
 brew "openssl"
 brew "phive"
 brew "php"
-brew "php@8.3"
+brew "php@8.0"
+brew "php@8.1"
+brew "php@8.2"
 brew "pinentry"
 brew "pinentry-mac"
 brew "pipenv"
