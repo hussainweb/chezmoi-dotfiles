@@ -9,7 +9,7 @@
 
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $macos = true -}}
-{{-   $computerName = output "scutil --get ComputerName" -}}
+{{-   $computerName = output "scutil" "--get" "ComputerName" | trim -}}
 {{- end -}}
 
 {{- if eq .chezmoi.hostname "the-good-machine" "tiny-tardis" "eressea" -}}
