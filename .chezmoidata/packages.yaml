@@ -1,0 +1,87 @@
+packages:
+  homebrew:
+    essential:
+      taps:
+        - homebrew/cask-fonts
+      brews:
+        # Shell
+        - fish
+        - starship
+        # Modern CLI replacements
+        - bat
+        - bottom
+        - broot
+        - btop
+        - cheat
+        - curlie
+        - difftastic
+        - dog
+        - duf
+        - dust
+        - eza
+        - fd
+        - fzf
+        - gping
+        - hexyl
+        - htop
+        - httpie
+        - lsd
+        - ripgrep
+        - the_silver_searcher
+        - xh
+        # System tools
+        - curl
+        - ffmpeg
+        - fx
+        - git
+        - git-delta
+        - git-extras
+        - git-lfs
+        - mas
+        - mkcert
+        - mosh
+        - pinentry
+        - pinentry-mac
+        - php
+        - python3
+        - tree
+        - watch
+        - wget
+        - xxh
+        - xz
+        
+      casks:
+        # Fonts
+        - font-0xproto-nerd-font
+        - font-monaspice-nerd-font
+        - font-caskaydia-cove-nerd-font
+        - font-droid-sans-mono-nerd-font
+        - font-fira-code-nerd-font
+        - font-go-mono-nerd-font
+        - font-hack
+        - font-hack-nerd-font
+        - font-inconsolata
+        - font-inconsolata-nerd-font
+        - font-jetbrains-mono
+        - font-jetbrains-mono-nerd-font
+        # Tools
+        - sublime-text
+        - visual-studio-code
+        - 1password
+        - 1password-cli
+        - itsycal
+        - iterm2
+        - tabby
+        # Browsers
+        - choosy
+        - google-chrome
+        - microsoft-edge
+        # Others
+        - logseq
+        - cleanshot
+        - raycast
+        - the-unarchiver
+        - vlc
+
+  apt:
+    - curl
