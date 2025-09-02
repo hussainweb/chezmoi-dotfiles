@@ -2,8 +2,6 @@ packages:
   homebrew:
     essential:
       taps:
-        - homebrew/cask-fonts
-        - homebrew/cask-drivers
         - drud/ddev
       brews:
         # Shell
