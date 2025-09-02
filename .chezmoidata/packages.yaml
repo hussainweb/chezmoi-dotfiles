@@ -2,7 +2,7 @@ packages:
   homebrew:
     essential:
       taps:
-        - drud/ddev
+        - ddev/ddev
       brews:
         # Shell
         - fish
