@@ -4,10 +4,12 @@
 {{- $macos := false -}}
 {{- $rpi := false -}}
 {{- $ssh_host := true -}}
+{{- $computerName := "" -}}
 {{- "" -}}
 
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $macos = true -}}
+{{-   $computerName = output "scutil --get ComputerName" -}}
 {{- end -}}
 
 {{- if eq .chezmoi.hostname "the-good-machine" "tiny-tardis" "eressea" -}}
@@ -27,6 +29,7 @@
   rpi = {{ $rpi }}
   ssh_host = {{ $ssh_host }}
   email = "hussainweb@gmail.com"
+  computerName = "{{ $computerName }}"
 
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.install-1password.sh"
