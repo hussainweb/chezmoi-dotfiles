@@ -1,15 +1,31 @@
 {{/* boolean feature tags */}}
 {{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
 {{- $personal := false -}}{{/* true if this machine is personal use and has additional tools */}}
+{{- $macos := false -}}
+{{- $rpi := false -}}
+{{- $ssh_host := true -}}
 {{- "" -}}
 
 {{- if eq .chezmoi.os "darwin" -}}
+{{-   $macos = true -}}
+{{- end -}}
+
+{{- if eq .chezmoi.hostname "the-good-machine" "tiny-tardis" "eressea" -}}
 {{-   $personal = true -}}
+{{-   $ssh_host = false -}}
+{{- end -}}
+
+{{- if eq .chezmoi.hostname "grey-havens" -}}
+{{-   $rpi = true -}}
+{{-   $ssh_host = true -}}
 {{- end -}}
 
 [data]
   transient = {{ $transient }}
   personal = {{ $personal }}
+  macos = {{ $macos }}
+  rpi = {{ $rpi }}
+  ssh_host = {{ $ssh_host }}
   email = "hussainweb@gmail.com"
 
 [hooks.read-source-state.pre]
