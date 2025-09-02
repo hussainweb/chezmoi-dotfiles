@@ -1,5 +1,10 @@
 #!/bin/bash
 {{ if eq .chezmoi.os "darwin" -}}
+# Add all taps
+{{ range .packages.homebrew.essential.taps -}}
+brew tap {{ . }}
+{{ end -}}
+# Install essential packages
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.homebrew.essential.brews -}}
 brew {{ . | quote }}
