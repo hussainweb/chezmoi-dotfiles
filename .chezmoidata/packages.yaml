@@ -3,10 +3,14 @@ packages:
     essential:
       taps:
         - homebrew/cask-fonts
+        - homebrew/cask-drivers
+        - drud/ddev
       brews:
         # Shell
         - fish
         - starship
+        - zellij
+
         # Modern CLI replacements
         - bat
         - bottom
@@ -15,7 +19,7 @@ packages:
         - cheat
         - curlie
         - difftastic
-        - dog
+        - doggo
         - duf
         - dust
         - eza
@@ -25,11 +29,37 @@ packages:
         - hexyl
         - htop
         - httpie
+        - lla
         - lsd
         - ripgrep
         - the_silver_searcher
         - xh
+
+        # AI tools
+        - llm
+        - ollama
+
+        # Developer tools
+        - awscli
+        - ddev
+        - dyff
+        - go-task
+        - helm
+        - hub
+        - hyperfine
+        - kubernetes-cli
+        - lazygit
+
+        # Languages
+        - go
+        - php
+        - python3
+        - node
+        - opentofu
+        - uv
+
         # System tools
+        - coder
         - curl
         - ffmpeg
         - fx
@@ -37,23 +67,29 @@ packages:
         - git-delta
         - git-extras
         - git-lfs
+        - git-quick-stats
+        - jq
         - mas
         - mkcert
         - mosh
         - pinentry
         - pinentry-mac
-        - php
-        - python3
+        - pv
         - tree
         - watch
         - wget
         - xxh
+        - yt-dlp
         - xz
         
       casks:
         # Fonts
         - font-0xproto-nerd-font
         - font-monaspice-nerd-font
+        - font-cascadia-code
+        - font-cascadia-code-pl
+        - font-cascadia-mono
+        - font-cascadia-mono-pl
         - font-caskaydia-cove-nerd-font
         - font-droid-sans-mono-nerd-font
         - font-fira-code-nerd-font
@@ -64,24 +100,59 @@ packages:
         - font-inconsolata-nerd-font
         - font-jetbrains-mono
         - font-jetbrains-mono-nerd-font
-        # Tools
+
+        # IDEs
+        - cursor
         - sublime-text
         - visual-studio-code
+        - zed
+
+        # AI Tools
+        - chatgpt
+
+        # Developer Tools
+        - ghostty
+        - gitup
+        - imageoptim
+        - orbstack
+        - warp
+
+        # Tools
         - 1password
         - 1password-cli
-        - itsycal
-        - iterm2
-        - tabby
+
         # Browsers
         - choosy
         - google-chrome
         - microsoft-edge
-        # Others
-        - logseq
-        - cleanshot
+
+        # Work Tools
+        - notion
+        - notion-calendar
         - raycast
+        - slack
         - the-unarchiver
         - vlc
+        - zoom
+
+        # Productivity
+        - logseq
+
+        # System Utilities
+        - cleanshot
+        - disk-inventory-x
+        - divvy
+        - handbrake
+        - karabiner-elements
+        - loop
+        - maccy
+        - mounty
+        - rectangle
+        - shortcat
+        - sloth
+        - stats
+        - tailscale
+        - tailscale-app
 
   apt:
     - curl
