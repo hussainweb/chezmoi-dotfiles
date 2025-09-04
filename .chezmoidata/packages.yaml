@@ -67,6 +67,7 @@ packages:
         - git-extras
         - git-lfs
         - git-quick-stats
+        - gnupg
         - jq
         - mas
         - mkcert
