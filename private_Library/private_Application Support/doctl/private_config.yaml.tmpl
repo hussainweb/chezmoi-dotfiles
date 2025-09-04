@@ -62,6 +62,53 @@ activations:
     limit: 1
     quiet: false
     skip: 0
+agent:
+  create:
+    agent-id: ""
+    anthropic-key-id: ""
+    description: ""
+    format: ""
+    instruction: ""
+    knowledge-base-id: ""
+    model-id: ""
+    name: ""
+    no-header: false
+    openai-key-id: ""
+    project-id: ""
+    region: ""
+    tags: ""
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+    region: ""
+    tag: ""
+  list-versions:
+    format: ""
+    no-header: false
+  update:
+    agent-id: ""
+    anthropic-key-id: ""
+    description: ""
+    format: ""
+    instruction: ""
+    k: 0
+    max-tokens: 0
+    model-id: ""
+    name: ""
+    no-header: false
+    openai-key-id: ""
+    project-id: ""
+    region: ""
+    retrieval-method: ""
+    temperature: "0"
+    top-p: "0"
+  update-visibility:
+    visibility: ""
 alert:
   create:
     compare: ""
@@ -96,12 +143,36 @@ alert:
     value: 0
     window: 5m
 api-url: ""
+apikeys:
+  create:
+    agent-id: ""
+    format: ""
+    name: ""
+    no-header: false
+  delete:
+    agent-id: ""
+    force: false
+  list:
+    agent-id: ""
+    format: ""
+    no-header: false
+  regenerate:
+    agent-id: ""
+  update:
+    agent-id: ""
+    format: ""
+    name: ""
+    no-header: false
 apps:
+  console:
+    deployment: ""
+    instance-name: ""
   create:
     format: ""
     no-header: false
     project-id: ""
     spec: ""
+    update-sources: false
     upsert: false
     wait: false
   create-deployment:
@@ -136,6 +207,7 @@ apps:
   logs:
     deployment: ""
     follow: false
+    no-prefix: false
     tail: -1
     type: run
   propose:
@@ -143,10 +215,16 @@ apps:
     format: ""
     no-header: false
     spec: ""
+  restart:
+    components: []
+    format: ""
+    no-header: false
+    wait: false
   update:
     format: ""
     no-header: false
     spec: ""
+    update-sources: false
     wait: false
   update-alert-destinations:
     app-alert-destinations: ""
@@ -158,20 +236,93 @@ apps:
     major-version: 0
     no-header: false
     trigger-deployment: true
+attachment:
+  create:
+    bgp-auth-key: ""
+    bgp-local-asn: 0
+    bgp-local-router-ip: ""
+    bgp-peer-asn: 0
+    bgp-peer-router-ip: ""
+    connection-bandwidth-in-mbps: 0
+    format: ""
+    naas-provider: ""
+    name: ""
+    no-header: false
+    parent-uuid: ""
+    redundancy-zone: ""
+    region: ""
+    type: partner
+    vpc-ids: []
+  delete:
+    force: false
+    format: ""
+    no-header: false
+    type: partner
+    wait: false
+  get:
+    format: ""
+    no-header: false
+    type: partner
+  get-bgp-auth-key:
+    format: ""
+    no-header: false
+    type: partner
+  get-service-key:
+    format: ""
+    no-header: false
+    type: partner
+  list:
+    format: ""
+    no-header: false
+    type: partner
+  list-routes:
+    format: ""
+    no-header: false
+    type: partner
+  regenerate-service-key:
+    format: ""
+    no-header: false
+    type: partner
+  update:
+    name: ""
+    type: partner
+    vpc-ids: ""
 auth:
   init:
     token-validation-server: https://cloud.digitalocean.com
   list:
     format: ""
 auth-contexts:
-  default: "true"
-  work: {{ onepasswordRead "op://Private/DigitalOcean/token" "axelerant.1password.com" }} 
+  work: {{ onepasswordRead "op://Employee/DigitalOcean/token" "axelerant.1password.com" }}
+backup-policies:
+  get:
+    format: ""
+    no-header: false
+    template: ""
 balance:
   get:
     format: ""
     no-header: false
 billing-history:
   list:
+    format: ""
+    no-header: false
+byoip-prefix:
+  create:
+    format: ""
+    no-header: false
+    prefix: ""
+    region: ""
+    signature: ""
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  resource:
     format: ""
     no-header: false
 cdn:
@@ -213,16 +364,27 @@ certificate:
     no-header: false
   list:
     format: ""
+    name: ""
     no-header: false
 cluster:
   create:
     1-clicks: []
     auto-upgrade: false
+    cluster-subnet: ""
+    control-plane-firewall-allowed-addresses: []
     count: 3
+    enable-amd-gpu-device-metrics-exporter-plugin: false
+    enable-amd-gpu-device-plugin: false
+    enable-control-plane-firewall: false
+    enable-routing-agent: false
+    expanders: []
     ha: false
     maintenance-window: any=00:00
     node-pool: []
     region: nyc1
+    scale-down-unneeded-time: ""
+    scale-down-utilization-threshold: ""
+    service-subnet: ""
     set-current-context: true
     size: s-1vcpu-2gb
     surge-upgrade: true
@@ -253,8 +415,16 @@ cluster:
   update:
     auto-upgrade: false
     cluster-name: ""
+    control-plane-firewall-allowed-addresses: []
+    enable-amd-gpu-device-metrics-exporter-plugin: false
+    enable-amd-gpu-device-plugin: false
+    enable-control-plane-firewall: false
+    enable-routing-agent: false
+    expanders: []
     ha: false
     maintenance-window: any=00:00
+    scale-down-unneeded-time: ""
+    scale-down-utilization-threshold: ""
     set-current-context: true
     surge-upgrade: false
     tag: []
@@ -265,11 +435,20 @@ compute:
   ssh:
     ssh-agent-forwarding: false
     ssh-command: ""
-    ssh-key-path: {{ .chezmoi.homeDir }}/.ssh/id_rsa
+    ssh-key-path: /Users/hw/.ssh/id_ed25519
     ssh-port: 22
     ssh-private-ip: false
+    ssh-retry-max: 0
     ssh-user: root
 config: /Users/hw/Library/Application Support/doctl/config.yaml
+configuration:
+  get:
+    engine: ""
+    format: ""
+    no-header: false
+  update:
+    config-json: '{}'
+    engine: ""
 context: default
 databases:
   backups:
@@ -278,6 +457,7 @@ databases:
   connection:
     format: ""
     no-header: false
+    private: false
   create:
     engine: pg
     num-nodes: 1
@@ -286,6 +466,8 @@ databases:
     restore-from-cluster-name: ""
     restore-from-timestamp: ""
     size: db-s-1vcpu-1gb
+    storage-size-mib: 0
+    tag: []
     version: ""
     wait: false
   delete:
@@ -297,15 +479,21 @@ databases:
   get:
     format: ""
     no-header: false
+  get-ca:
+    format: ""
+    no-header: false
   list:
     format: ""
     no-header: false
   migrate:
     private-network-uuid: ""
     region: ""
+    wait: false
   resize:
     num-nodes: 0
     size: ""
+    storage-size-mib: 0
+    wait: false
 db:
   delete:
     force: false
@@ -350,6 +538,9 @@ droplet:
     format: ""
     no-header: false
   create:
+    backup-policy-hour: 0
+    backup-policy-plan: ""
+    backup-policy-weekday: ""
     droplet-agent: false
     enable-backups: false
     enable-ipv6: false
@@ -358,6 +549,7 @@ droplet:
     format: ""
     image: ""
     no-header: false
+    project-id: ""
     region: ""
     size: ""
     ssh-keys: []
@@ -380,6 +572,7 @@ droplet:
     no-header: false
   list:
     format: ""
+    gpus: false
     no-header: false
     region: ""
     tag-name: ""
@@ -394,6 +587,13 @@ droplet:
   untag:
     tag-name: []
 droplet-action:
+  change-backup-policy:
+    backup-policy-hour: 0
+    backup-policy-plan: ""
+    backup-policy-weekday: ""
+    format: ""
+    no-header: false
+    wait: false
   change-kernel:
     format: ""
     kernel-id: 0
@@ -404,6 +604,9 @@ droplet-action:
     no-header: false
     wait: false
   enable-backups:
+    backup-policy-hour: 0
+    backup-policy-plan: ""
+    backup-policy-weekday: ""
     format: ""
     no-header: false
     wait: false
@@ -469,6 +672,67 @@ droplet-action:
     no-header: false
     snapshot-name: ""
     wait: false
+droplet-autoscale:
+  create:
+    cooldown-minutes: 0
+    cpu-target: ""
+    droplet-agent: true
+    enable-ipv6: true
+    format: ""
+    image: ""
+    max-instances: 0
+    mem-target: ""
+    min-instances: 0
+    name: ""
+    no-header: false
+    project-id: ""
+    region: ""
+    size: ""
+    ssh-keys: []
+    tag: []
+    target-instances: 0
+    user-data: ""
+    vpc-uuid: ""
+  delete:
+    force: false
+  delete-dangerous:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  list-history:
+    format: ""
+    no-header: false
+  list-members:
+    format: ""
+    no-header: false
+  update:
+    cooldown-minutes: 0
+    cpu-target: ""
+    droplet-agent: true
+    enable-ipv6: true
+    format: ""
+    image: ""
+    max-instances: 0
+    mem-target: ""
+    min-instances: 0
+    name: ""
+    no-header: false
+    project-id: ""
+    region: ""
+    size: ""
+    ssh-keys: []
+    tag: []
+    target-instances: 0
+    user-data: ""
+    vpc-uuid: ""
+events:
+  list:
+    format: ""
+    no-header: false
 firewall:
   add-droplets:
     droplet-ids: []
@@ -543,6 +807,33 @@ floating-ip-action:
   unassign:
     format: ""
     no-header: false
+functionroute:
+  create:
+    agent-id: ""
+    description: ""
+    faas-name: ""
+    faas-namespace: ""
+    format: ""
+    input-schema: ""
+    name: ""
+    no-header: false
+    output-schema: ""
+  delete:
+    agent-id: ""
+    format: ""
+    function-id: ""
+    no-header: false
+  update:
+    agent-id: ""
+    description: ""
+    faas-name: ""
+    faas-namespace: ""
+    format: ""
+    function-id: ""
+    input-schema: ""
+    name: ""
+    no-header: false
+    output-schema: ""
 functions:
   get:
     code: false
@@ -578,6 +869,9 @@ garbage-collection:
     format: ""
     include-untagged-manifests: false
     no-header: false
+http-retry-max: 5
+http-retry-wait-max: 30
+http-retry-wait-min: 1
 image:
   create:
     image-description: ""
@@ -620,6 +914,12 @@ image-action:
     no-header: false
     region: ""
     wait: false
+indexes:
+  delete:
+    force: false
+  list:
+    format: ""
+    no-header: false
 invoice:
   get:
     format: ""
@@ -630,6 +930,68 @@ invoice:
   summary:
     format: ""
     no-header: false
+keys:
+  create:
+    grants: []
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  update:
+    grants: []
+    name: ""
+knowledge-base:
+  add-datasource:
+    base-url: ""
+    bucket-name: ""
+    crawling-option: ""
+    embed-media: false
+    format: ""
+    item-path: ""
+    no-header: false
+    region: ""
+  attach:
+    format: ""
+    no-header: false
+  create:
+    data-sources: ""
+    database-id: ""
+    embedding-model-uuid: ""
+    format: ""
+    name: ""
+    no-header: false
+    project-id: ""
+    region: ""
+    tags: []
+    vpc_uuid: ""
+  delete:
+    force: false
+  delete-datasource:
+    force: false
+  detach:
+    force: false
+    format: ""
+    no-header: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  list-datasources:
+    format: ""
+    no-header: false
+  update:
+    database-id: ""
+    embedding-model-uuid: ""
+    format: ""
+    name: ""
+    no-header: false
+    project-id: ""
+    tags: []
+    uuid: ""
 kubeconfig:
   exec-credential:
     version: ""
@@ -639,6 +1001,12 @@ kubeconfig:
     set-current-context: true
   show:
     expiry-seconds: 0
+list-models:
+  format: ""
+  no-header: false
+list-regions:
+  format: ""
+  no-header: false
 load-balancer:
   add-droplets:
     droplet-ids: []
@@ -649,13 +1017,18 @@ load-balancer:
     allow-list: []
     deny-list: []
     disable-lets-encrypt-dns-records: false
+    domains: []
     droplet-ids: []
     enable-backend-keepalive: false
     enable-proxy-protocol: false
     forwarding-rules: ""
+    glb-cdn-settings: ""
+    glb-settings: ""
     health-check: ""
     http-idle-timeout-seconds: 0
     name: ""
+    network: ""
+    network-stack: ""
     project-id: ""
     redirect-http-to-https: false
     region: ""
@@ -663,6 +1036,9 @@ load-balancer:
     size-unit: 0
     sticky-sessions: ""
     tag-name: ""
+    target-lb-ids: []
+    tls-cipher-policy: ""
+    type: ""
     vpc-uuid: ""
     wait: false
   delete:
@@ -673,6 +1049,8 @@ load-balancer:
   list:
     format: ""
     no-header: false
+  purge-cache:
+    force: false
   remove-droplets:
     droplet-ids: []
   remove-forwarding-rules:
@@ -682,10 +1060,13 @@ load-balancer:
     allow-list: []
     deny-list: []
     disable-lets-encrypt-dns-records: false
+    domains: []
     droplet-ids: []
     enable-backend-keepalive: false
     enable-proxy-protocol: false
     forwarding-rules: ""
+    glb-cdn-settings: ""
+    glb-settings: ""
     health-check: ""
     name: ""
     project-id: ""
@@ -695,6 +1076,8 @@ load-balancer:
     size-unit: 0
     sticky-sessions: ""
     tag-name: ""
+    target-lb-ids: []
+    tls-cipher-policy: ""
     vpc-uuid: ""
 maintenance-window:
   get:
@@ -749,6 +1132,28 @@ node-pool:
     name: ""
     tag: []
     taint: []
+openai-key:
+  create:
+    api-key: ""
+    format: ""
+    name: ""
+    no-header: false
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  get-agents:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  update:
+    api-key: ""
+    format: ""
+    name: ""
+    no-header: false
 options:
   regions:
     engine: ""
@@ -757,6 +1162,22 @@ options:
   versions:
     engine: ""
 output: text
+peerings:
+  create:
+    vpc-ids: ""
+    wait: false
+  delete:
+    force: false
+    wait: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+    vpc-id: ""
+  update:
+    name: ""
 pool:
   create:
     db: ""
@@ -771,6 +1192,11 @@ pool:
   list:
     format: ""
     no-header: false
+  update:
+    db: ""
+    mode: transaction
+    size: 0
+    user: ""
 projects:
   create:
     description: ""
@@ -847,6 +1273,7 @@ registry:
     namespace: kube-system
   login:
     expiry-seconds: 0
+    never-expire: false
     read-only: false
   logout:
     authorization-server-endpoint: https://cloud.digitalocean.com/v1/oauth/revoke
@@ -881,6 +1308,19 @@ repository:
     format: ""
     no-header: false
 required:
+  agent:
+    create:
+      instruction: true
+      model-id: true
+      name: true
+      project-id: true
+      region: true
+    update-visibility:
+      visibility: true
+  apikeys:
+    create:
+      agent-id: true
+      name: true
   apps:
     create:
       spec: true
@@ -890,12 +1330,28 @@ required:
       spec: true
     upgrade-buildpack:
       buildpack: true
+  attachment:
+    create:
+      connection-bandwidth-in-mbps: true
+      naas-provider: true
+      name: true
+      region: true
+      vpc-ids: true
+    update:
+      name: true
+      vpc-ids: true
   certificate:
     create:
       name: true
   cluster:
     create:
       region: true
+  configuration:
+    get:
+      engine: true
+    update:
+      config-json: true
+      engine: true
   databases:
     fork:
       restore-from-cluster-id: true
@@ -912,6 +1368,8 @@ required:
     tag:
       tag-name: true
   droplet-action:
+    change-backup-policy:
+      backup-policy-plan: true
     change-kernel:
       kernel-id: true
     get:
@@ -926,6 +1384,11 @@ required:
       image-id: true
     snapshot:
       snapshot-name: true
+  droplet-autoscale:
+    create:
+      name: true
+    update:
+      name: true
   firewall:
     create:
       name: true
@@ -938,6 +1401,21 @@ required:
       uuid: true
     replace:
       rule: true
+  functionroute:
+    create:
+      agent-id: true
+      description: true
+      faas-name: true
+      faas-namespace: true
+      input-schema: true
+      name: true
+      output-schema: true
+    delete:
+      agent-id: true
+      function-id: true
+    update:
+      agent-id: true
+      function-id: true
   image:
     create:
       image-url: true
@@ -948,6 +1426,19 @@ required:
     get:
       action-id: true
     transfer:
+      region: true
+  keys:
+    create:
+      grants: true
+    update:
+      grants: true
+      name: true
+  knowledge-base:
+    create:
+      data-sources: true
+      embedding-model-uuid: true
+      name: true
+      project-id: true
       region: true
   load-balancer:
     create:
@@ -969,9 +1460,18 @@ required:
       count: true
       name: true
       size: true
+  openai-key:
+    create:
+      api-key: true
+      name: true
   options:
     slugs:
       engine: true
+  peerings:
+    create:
+      vpc-ids: true
+    update:
+      name: true
   pool:
     create:
       db: true
@@ -984,6 +1484,16 @@ required:
   registry:
     create:
       subscription-tier: true
+  route:
+    add:
+      child-agent-id: true
+      parent-agent-id: true
+    delete:
+      child-agent-id: true
+      parent-agent-id: true
+    update:
+      child-agent-id: true
+      parent-agent-id: true
   ssh-key:
     create:
       public-key: true
@@ -996,6 +1506,23 @@ required:
       resource: true
     remove:
       resource: true
+  uptime:
+    create:
+      target: true
+    update:
+      name: true
+      regions: true
+      target: true
+      type: true
+  uptime-alert:
+    create:
+      name: true
+      period: true
+      type: true
+    update:
+      name: true
+      period: true
+      type: true
   volume:
     create:
       size: true
@@ -1007,6 +1534,13 @@ required:
     resize:
       region: true
       size: true
+  vpc-nat-gateway:
+    create:
+      name: true
+      region: true
+    update:
+      name: true
+      region: true
   vpcs:
     create:
       name: true
@@ -1037,6 +1571,26 @@ reserved-ip-action:
   unassign:
     format: ""
     no-header: false
+reserved-ipv6:
+  assign:
+    format: ""
+    no-header: false
+  create:
+    format: ""
+    no-header: false
+    region: ""
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+    region: ""
+  unassign:
+    format: ""
+    no-header: false
 resources:
   assign:
     resource: []
@@ -1046,6 +1600,27 @@ resources:
   list:
     format: ""
     no-header: false
+route:
+  add:
+    child-agent-id: ""
+    format: ""
+    if-case: ""
+    no-header: false
+    parent-agent-id: ""
+    route-id: ""
+    route-name: ""
+  delete:
+    child-agent-id: ""
+    force: false
+    parent-agent-id: ""
+  update:
+    child-agent-id: ""
+    format: ""
+    if-case: ""
+    no-header: false
+    parent-agent-id: ""
+    route-id: ""
+    route-name: ""
 serverless:
   connect:
     apihost: ""
@@ -1156,6 +1731,63 @@ tag:
     no-header: false
   remove:
     resource: []
+topics:
+  create:
+    cleanup-policy: delete
+    compression-type: producer
+    delete-retention-ms: ""
+    file-delete-delay-ms: ""
+    flush-messages: ""
+    flush-ms: ""
+    interval-index-bytes: ""
+    max-compaction-lag-ms: ""
+    max-message-bytes: ""
+    message-down-conversion-enable: true
+    message-format-version: ""
+    message-timestamp-type: ""
+    min-cleanable-dirty-ratio: ""
+    min-compaction-lag-ms: ""
+    min-insync-replicas: ""
+    partition-count: 1
+    preallocate: false
+    replication-factor: 2
+    retention-bytes: ""
+    retention-ms: ""
+    segment-bytes: ""
+    segment-jitter-ms: ""
+    segment-ms: ""
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  update:
+    cleanup-policy: delete
+    compression-type: producer
+    delete-retention-ms: ""
+    file-delete-delay-ms: ""
+    flush-messages: ""
+    flush-ms: ""
+    interval-index-bytes: ""
+    max-compaction-lag-ms: ""
+    max-message-bytes: ""
+    message-down-conversion-enable: true
+    message-format-version: ""
+    message-timestamp-type: ""
+    min-cleanable-dirty-ratio: ""
+    min-compaction-lag-ms: ""
+    min-insync-replicas: ""
+    partition-count: 1
+    preallocate: false
+    replication-factor: 2
+    retention-bytes: ""
+    retention-ms: ""
+    segment-bytes: ""
+    segment-jitter-ms: ""
+    segment-ms: ""
 triggers:
   disable:
     format: ""
@@ -1170,9 +1802,57 @@ triggers:
     format: ""
     function: ""
     no-header: false
+uptime:
+  create:
+    enabled: true
+    format: ""
+    no-header: false
+    regions:
+    - us_east
+    target: ""
+    type: ""
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  update:
+    format: ""
+    name: ""
+    no-header: false
+    regions:
+    - us_east
+    target: ""
+    type: ""
+uptime-alert:
+  create:
+    comparison: ""
+    emails: []
+    format: ""
+    name: ""
+    no-header: false
+    period: ""
+    slack-channels: []
+    slack-urls: []
+    threshold: 0
+    type: ""
+  update:
+    comparison: ""
+    emails: []
+    format: ""
+    name: ""
+    no-header: false
+    period: ""
+    slack-channels: []
+    slack-urls: []
+    threshold: 0
+    type: ""
 user:
   create:
+    acl: []
     mysql-auth-plugin: ""
+    opensearch-acl: []
   delete:
     force: false
   get:
@@ -1223,6 +1903,37 @@ volume-action:
     region: ""
     size: 0
     wait: false
+vpc-nat-gateway:
+  create:
+    format: ""
+    icmp-timeout: 30
+    name: ""
+    no-header: false
+    region: ""
+    size: 1
+    tcp-timeout: 300
+    type: PUBLIC
+    udp-timeout: 30
+    vpcs: []
+  delete:
+    force: false
+  get:
+    format: ""
+    no-header: false
+  list:
+    format: ""
+    no-header: false
+  update:
+    format: ""
+    icmp-timeout: 30
+    name: ""
+    no-header: false
+    region: ""
+    size: 1
+    tcp-timeout: 300
+    type: PUBLIC
+    udp-timeout: 30
+    vpcs: []
 vpcs:
   create:
     description: ""
