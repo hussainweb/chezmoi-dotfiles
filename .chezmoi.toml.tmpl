@@ -12,7 +12,7 @@
 {{-   $computerName = output "scutil" "--get" "ComputerName" | trim -}}
 {{- end -}}
 
-{{- if eq .chezmoi.hostname "the-good-machine" "tiny-tardis" "eressea" -}}
+{{- if eq $computerName "the-good-machine" "tiny-tardis" "eressea" -}}
 {{-   $personal = true -}}
 {{-   $ssh_host = false -}}
 {{- end -}}
