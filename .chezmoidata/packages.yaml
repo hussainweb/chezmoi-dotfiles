@@ -41,6 +41,7 @@ packages:
         - awscli
         - ddev
         - dyff
+        - gh
         - go-task
         - helm
         - hub
