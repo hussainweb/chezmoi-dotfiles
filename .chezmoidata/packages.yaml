@@ -36,6 +36,7 @@ packages:
         # AI tools
         - llm
         - ollama
+        - repomix
 
         # Developer tools
         - awscli
