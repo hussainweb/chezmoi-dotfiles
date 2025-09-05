@@ -15,7 +15,8 @@ cask {{ . | quote }}
 EOF
 {{ else if eq .chezmoi.os "linux" -}}
 sudo apt update
-sudo apt install -y {{ range .packages.apt -}}
-{{ . | quote }}
+{{ if .packages.apt -}}
+sudo apt install -y {{ range .packages.apt }} \
+  {{ . | quote }}{{ end }}
 {{ end -}}
 {{ end -}}
