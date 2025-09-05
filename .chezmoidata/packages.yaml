@@ -64,7 +64,6 @@ packages:
         - coder
         - curl
         - curlie
-        - ffmpeg
         - fx
         - git
         - git-delta
@@ -88,6 +87,10 @@ packages:
         - xxh
         - yt-dlp
         - xz
+
+        # Media
+        - ffmpeg
+        - handbrake
         
       casks:
         # Fonts
@@ -149,7 +152,7 @@ packages:
         - cleanshot
         - disk-inventory-x
         - divvy
-        - handbrake
+        - handbrake-app
         - karabiner-elements
         - loop
         - maccy
