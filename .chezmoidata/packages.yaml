@@ -40,6 +40,7 @@ packages:
         # Developer tools
         - awscli
         - ddev
+        - direnv
         - dyff
         - gh
         - go-task
@@ -48,6 +49,7 @@ packages:
         - hyperfine
         - kubernetes-cli
         - lazygit
+        - tailspin
 
         # Languages
         - go
@@ -60,6 +62,7 @@ packages:
         # System tools
         - coder
         - curl
+        - curlie
         - ffmpeg
         - fx
         - git
@@ -67,7 +70,9 @@ packages:
         - git-extras
         - git-lfs
         - git-quick-stats
+        - glow
         - gnupg
+        - httpie
         - jq
         - mas
         - mkcert
@@ -75,6 +80,7 @@ packages:
         - pinentry
         - pinentry-mac
         - pv
+        - superfile
         - tree
         - watch
         - wget
